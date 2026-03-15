@@ -19,23 +19,23 @@ import { Beneficio } from '../../../core/models/beneficio.model';
     MatButtonModule, MatDialogModule, MatSnackBarModule
   ],
   template: `
-    <h2 mat-dialog-title>{{ isEdit ? 'Editar' : 'Novo' }} Benefício</h2>
+    <h2 mat-dialog-title>{{ isEdit ? 'Editar' : 'Novo' }} Beneficio</h2>
     <mat-dialog-content>
       <form [formGroup]="form" style="display:flex; flex-direction:column; gap:12px; padding-top:8px">
         <mat-form-field appearance="outline">
           <mat-label>Nome *</mat-label>
           <input matInput formControlName="nome" maxlength="100">
-          <mat-error *ngIf="form.get('nome')?.hasError('required')">Nome é obrigatório</mat-error>
+          <mat-error *ngIf="form.get('nome')?.hasError('required')">Nome e obrigatorio</mat-error>
         </mat-form-field>
         <mat-form-field appearance="outline">
-          <mat-label>Descrição</mat-label>
+          <mat-label>Descricao</mat-label>
           <textarea matInput formControlName="descricao" rows="3" maxlength="255"></textarea>
         </mat-form-field>
         <mat-form-field appearance="outline">
           <mat-label>Valor *</mat-label>
           <input matInput type="number" formControlName="valor" min="0" step="0.01">
-          <mat-error *ngIf="form.get('valor')?.hasError('required')">Valor é obrigatório</mat-error>
-          <mat-error *ngIf="form.get('valor')?.hasError('min')">Valor não pode ser negativo</mat-error>
+          <mat-error *ngIf="form.get('valor')?.hasError('required')">Valor e obrigatorio</mat-error>
+          <mat-error *ngIf="form.get('valor')?.hasError('min')">Valor nao pode ser negativo</mat-error>
         </mat-form-field>
         <mat-checkbox formControlName="ativo">Ativo</mat-checkbox>
       </form>
