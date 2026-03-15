@@ -9,7 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
-import org.springframework.test.annotation.DirtiesContext;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.test.web.servlet.MockMvc;
 
 import java.math.BigDecimal;
@@ -20,7 +20,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest
 @AutoConfigureMockMvc
-@DirtiesContext(classMode = DirtiesContext.ClassMode.BEFORE_EACH_TEST_METHOD)
+@Transactional
 class BeneficioControllerIntegrationTest {
 
     @Autowired
@@ -116,10 +116,10 @@ class BeneficioControllerIntegrationTest {
     @Test
     @DisplayName("DELETE /api/v1/beneficios/{id} deve retornar 204 e GET subsequente 404")
     void delete_returns204_thenGetReturns404() throws Exception {
-        mockMvc.perform(delete("/api/v1/beneficios/1"))
+        mockMvc.perform(delete("/api/v1/beneficios/2"))
                 .andExpect(status().isNoContent());
 
-        mockMvc.perform(get("/api/v1/beneficios/1"))
+        mockMvc.perform(get("/api/v1/beneficios/2"))
                 .andExpect(status().isNotFound());
     }
 
